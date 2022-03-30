@@ -15,7 +15,6 @@ import org.junit.jupiter.api.assertThrows
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
 import java.util.*
-import javax.persistence.EntityManager
 
 class TopicoServiceTest {
     private val topico = TopicoTest.build()
@@ -26,7 +25,6 @@ class TopicoServiceTest {
     private val pageable: Pageable = mockk()
     private val topicoViewMapper: TopicoViewMapper = mockk()
     private val topicoFormMapper: TopicoFormMapper = mockk()
-    private val entityManager: EntityManager = mockk()
 
     private val topicoRepository: TopicoRepository = mockk {
         every { findAll(pageable) } returns pages
@@ -37,8 +35,7 @@ class TopicoServiceTest {
         repository = topicoRepository,
         topicoViewMapper = topicoViewMapper,
         topicoFormMapper = topicoFormMapper,
-        notFoundMessage = "Topico nao encontrado!",
-        em = entityManager)
+        notFoundMessage = "Topico nao encontrado!")
 
     @Test
     fun `deve listar topico por nome do curso`() {

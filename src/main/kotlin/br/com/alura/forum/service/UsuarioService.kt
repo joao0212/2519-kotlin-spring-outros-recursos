@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service
 import java.lang.RuntimeException
 
 @Service
-class UsuarioService (
-        private val repository: UsuarioRepository
-        ) : UserDetailsService {
+class UsuarioService(
+    private val repository: UsuarioRepository
+) : UserDetailsService {
 
     fun buscarPorId(id: Long): Usuario {
         return repository.getOne(id)
