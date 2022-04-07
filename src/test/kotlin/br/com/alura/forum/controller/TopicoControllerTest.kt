@@ -1,6 +1,7 @@
 package br.com.alura.forum.controller
 
 import br.com.alura.forum.config.JWTUtil
+import br.com.alura.forum.configuration.DatabaseContainerConfiguration
 import br.com.alura.forum.model.Role
 import br.com.alura.forum.model.UsuarioTest
 import org.junit.jupiter.api.BeforeEach
@@ -13,9 +14,11 @@ import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
+import org.testcontainers.junit.jupiter.Testcontainers
 
+@Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class TopicoControllerTest {
+class TopicoControllerTest : DatabaseContainerConfiguration() {
 
     @Autowired
     private lateinit var webApplicationContext: WebApplicationContext
@@ -29,8 +32,8 @@ class TopicoControllerTest {
 
     companion object {
         private const val TOKEN = "%s"
-        private const val URI = "/topicos/"
-        private const val URI_WITH_PARAM = URI.plus("%s")
+        private const val URI = "/topicos"
+        private const val URI_WITH_PARAM = URI.plus("/%s")
     }
 
     @BeforeEach
@@ -56,7 +59,7 @@ class TopicoControllerTest {
 
     @Test
     fun `deve retornar codigo 200 quando chamar topicos por id e usuario estiver autenticado`() {
-        mockMvc.get(URI_WITH_PARAM.format("2")) {
+        mockMvc.get(URI_WITH_PARAM.format("1")) {
             headers { this.setBearerAuth(TOKEN.format(jwt)) }
         }.andExpect { status { isOk() } }
     }

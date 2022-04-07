@@ -5,7 +5,6 @@ import br.com.alura.forum.dto.NovoTopicoForm
 import br.com.alura.forum.dto.TopicoView
 import br.com.alura.forum.service.TopicoService
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.web.PageableDefault
@@ -25,14 +24,10 @@ class TopicoController(private val service: TopicoService) {
     fun listar(
             @RequestParam(required = false) nomeCurso: String?,
             @PageableDefault(size = 5, sort = ["dataCriacao"], direction = Sort.Direction.DESC) paginacao: Pageable
-    ): Page<TopicoView> {
-        return service.listar(nomeCurso, paginacao)
-    }
+    ) = service.listar(nomeCurso, paginacao)
 
     @GetMapping("/{id}")
-    fun buscarPorId(@PathVariable id: Long): TopicoView {
-        return service.buscarPorId(id)
-    }
+    fun buscarPorId(@PathVariable id: Long) = service.buscarPorId(id)
 
     @PostMapping
     @Transactional
@@ -55,7 +50,5 @@ class TopicoController(private val service: TopicoService) {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Transactional
-    fun deletar(@PathVariable id: Long) {
-        service.deletar(id)
-    }
+    fun deletar(@PathVariable id: Long) = service.deletar(id)
 }
