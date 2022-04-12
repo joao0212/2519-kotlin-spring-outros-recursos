@@ -35,7 +35,7 @@ jobs:
         run: heroku container:login
 
       - name: Add remote
-        run heroku git:remote -a gentle-reef-54712
+        run: heroku git:remote -a gentle-reef-54712
 
       - name: Container push
         run: heroku container:push web
