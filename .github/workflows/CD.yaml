@@ -35,6 +35,9 @@ jobs:
         run: heroku container:login
 
       - name: Container push
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_APP_NAME: gentle-reef-54712
         run: heroku container:push web
 
       - name: Container release
