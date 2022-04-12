@@ -2,7 +2,7 @@ name: CD
 
 on:
   push:
-    branches: [ main ]
+    branches: [ curso_5_codigo_completo ]
 
 jobs:
   build:
