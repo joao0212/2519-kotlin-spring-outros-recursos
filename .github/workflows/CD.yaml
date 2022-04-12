@@ -34,11 +34,5 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:login
 
-      - name: Add remote
-        run: heroku git:remote -a gentle-reef-54712
-
-      - name: Container push
-        run: heroku container:push web
-
-      - name: Container release
-        run: heroku container:release web
+      - name: Deploy on heroku
+        run: heroku git:remote -a gentle-reef-54712 && heroku container:push web && heroku container:release web
