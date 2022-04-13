@@ -1,41 +1,34 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>All Users</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="all"
-          href="../../bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <title>Relatorio administrativo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
-
 <body>
-    <div class="container my-2">
-        <div class="card">
-            <div class="card-body">
-                <div th:switch="${topicosPorCategorias}" class="container my-5">
-                    <div class="col-md-10">
-                        <h2 th:case="null">No record found !!</h2>
-                        <div th:case="*">
-                            <table class="table table-striped table-responsive-md">
-                                <thead>
-                                <tr>
-                                    <th>Categoria</th>
-                                    <th>Quantidade</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="topicosPorCategoria : ${topicosPorCategorias}">
-                                    <td th:text="${topicosPorCategoria.categoria}"></td>
-                                    <td th:text="${topicosPorCategoria.quantidade}"></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1> Topicos por categoria </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th> Categoria </th>
+                        <th> Quantidade </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${topicosPorCategorias.empty}">
+                        <td colspan="2"> Sem dados </td>
+                    </tr>
+                    <tr th:each="topicosPorCategoria : ${topicosPorCategorias}">
+                        <td th:text="${topicosPorCategoria.categoria}"></td>
+                        <td th:text="${topicosPorCategoria.quantidade}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
