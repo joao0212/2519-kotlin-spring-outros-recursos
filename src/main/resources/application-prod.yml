@@ -9,25 +9,5 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
-  cache:
-    type: redis
-  redis:
-    host: redis-16763.c8.us-east-1-4.ec2.cloud.redislabs.com
-    port: 16763
-    password: ${REDIS_PASSWORD}
-  mail:
-    host: smtp.mailtrap.io
-    port: 2525
-    username: c3d3ffffd0f574
-    password: 2b812338d8b222
-    properties:
-      mail:
-        transport:
-          protocol: smtp
-        debug: true
-        smtp:
-          auth: true
-          starttls:
-            enable: true
 jwt:
   secret: secret
