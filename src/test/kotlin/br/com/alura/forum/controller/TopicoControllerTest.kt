@@ -32,7 +32,7 @@ class TopicoControllerTest : DatabaseContainerConfiguration() {
 
     companion object {
         private const val TOKEN = "%s"
-        private const val URI = "/topico"
+        private const val URI = "/topicos"
         private const val URI_WITH_PARAM = URI.plus("/%s")
     }
 
