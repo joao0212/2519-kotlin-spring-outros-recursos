@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - *
+      - '*'
 
 jobs:
   in-docker_test:
@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '11'
-          
+
       - name: Cache de deps
         uses: actions/cache@v1
         with:
