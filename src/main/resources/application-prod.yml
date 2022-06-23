@@ -1,13 +1,33 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://wb39lt71kvkgdmw0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/t8j812ia76hp8846
-    username: ${MYSQL_USER}
+    url: jdbc:mysql://eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/fviooy06yi2yn29z
+    username: ${MYSQL_USERNAME}
     password: ${MYSQL_PASSWORD}
   jpa:
     properties:
       hibernate:
         show_sql: true
         format_sql: true
+  cache:
+    type: redis
+  redis:
+    host: redis-13949.c11.us-east-1-2.ec2.cloud.redislabs.com
+    port: 13949
+    password: ${REDIS_PASSWORD}
+  mail:
+    host: smtp.mailtrap.io
+    port: 2525
+    username: c3d3ffffd0f574
+    password: 2b812338d8b222
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        debug: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 jwt:
   secret: secret
